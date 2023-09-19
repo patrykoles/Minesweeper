@@ -22,6 +22,10 @@ public class GameLauncher {
             }
         }
 
+        BombSpawner spawner = new BombSpawner(fields);
+        int noBombs = spawner.spawnBombs();
+        //System.out.println(noBombs);
+
         frame.add(board);
         frame.setVisible(true);
         for(int i = 0; i<size*size;i++){
