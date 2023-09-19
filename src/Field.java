@@ -49,4 +49,11 @@ public class Field extends JButton {
         return numOfBombs;
     }
 
+    public void leftClick(){
+        state.leftClick();
+    }
+    public void rightClick(){
+        state.rightClick();
+    }
+
 }

@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-public class GameLauncher {
+public class GameLauncher implements MouseListener {
     MainFrame frame;
     PanelCreator board = new PanelCreator(Color.LIGHT_GRAY, 840, 620);
     private ArrayList<Field> fields;
@@ -19,6 +20,7 @@ public class GameLauncher {
                 //setting indexes of fields
                 fields.get(i*size+j).setX(i);
                 fields.get(i*size+j).setY(j);
+                fields.get(i*size+j).addMouseListener(this);
             }
         }
 
@@ -40,4 +42,27 @@ public class GameLauncher {
         }
 
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        Field tempField = (Field) e.getSource();
+        if(SwingUtilities.isLeftMouseButton(e)){
+            tempField.leftClick();
+        }
+        if(SwingUtilities.isRightMouseButton(e)){
+            tempField.rightClick();
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {}
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
 }
