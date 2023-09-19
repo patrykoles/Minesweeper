@@ -9,10 +9,12 @@ public class Field extends JButton {
     private int y;
     private int numOfBombs;
     Field(){
+        this.setFont(new Font(null,Font.PLAIN,10));
         this.changeState(new DefaultState(this));
         this.setBackground(Color.GRAY);
         this.setFocusable(false);
         this.setOpaque(true);
+        numOfBombs = 0;
     }
 
     public void changeState(State newState){
@@ -41,6 +43,8 @@ public class Field extends JButton {
     public void setNumOfBombs(int n){
         this.numOfBombs = n;
     }
+
+    public void increaseNumOfBombs(){this.numOfBombs++;}
     public int getNumOfBombs(){
         return numOfBombs;
     }

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class GameLauncher {
     MainFrame frame;
-    PanelCreator board = new PanelCreator(Color.LIGHT_GRAY, 400, 400);
+    PanelCreator board = new PanelCreator(Color.LIGHT_GRAY, 840, 620);
     private ArrayList<Field> fields;
     GameLauncher(int size){
         frame = new MainFrame();
-        frame.setLayout(new FlowLayout(FlowLayout.CENTER,0,100));
+        frame.setLayout(new FlowLayout(FlowLayout.CENTER,0,50));
         board.setLayout(new GridLayout(size,size));
 
 
@@ -25,11 +25,19 @@ public class GameLauncher {
         BombSpawner spawner = new BombSpawner(fields);
         int noBombs = spawner.spawnBombs();
         //System.out.println(noBombs);
+        BombSpotter spotter = new BombSpotter(fields);
+        spotter.spotBombs();
 
         frame.add(board);
         frame.setVisible(true);
         for(int i = 0; i<size*size;i++){
             board.add(fields.get(i));
+            /*if(fields.get(i).checkIfBomb()){
+                fields.get(i).setText("B");
+            }else if(fields.get(i).getNumOfBombs()>0){
+                fields.get(i).setText(Integer.toString(fields.get(i).getNumOfBombs()));
+            }*/
         }
+
     }
 }

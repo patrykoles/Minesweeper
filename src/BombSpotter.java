@@ -10,7 +10,19 @@ public class BombSpotter {
     public void spotBombs(){
         for(int i = 0; i<fields.size(); i++){
             if(fields.get(i).checkIfBomb()){
-                //TO DO: Adding number of bombs to all neighbours
+                //Adding number of bombs to all neighbours
+                if(i%size != 0){
+                    fields.get(i-1).increaseNumOfBombs();
+                    if(i>=size){fields.get(i-size-1).increaseNumOfBombs();}
+                    if(i<size*size-size){fields.get(i+size-1).increaseNumOfBombs();}
+                }
+                if(i%size != size-1){
+                    fields.get(i+1).increaseNumOfBombs();
+                    if(i>=size){fields.get(i-size+1).increaseNumOfBombs();}
+                    if(i<size*size-size){fields.get(i+size+1).increaseNumOfBombs();}
+                }
+                if(i>=size){fields.get(i-size).increaseNumOfBombs();}
+                if(i<size*size-size){fields.get(i+size).increaseNumOfBombs();}
             }
         }
     }
