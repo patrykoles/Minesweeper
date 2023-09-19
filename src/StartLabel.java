@@ -14,7 +14,6 @@ public class StartLabel extends JLabel {
 
         this.setHorizontalTextPosition(JLabel.LEFT);
         this.setHorizontalAlignment(JLabel.CENTER);
-        this.setVerticalAlignment(JLabel.TOP);
 
         this.setFont(new Font(Font.SANS_SERIF,Font.BOLD,30));
     }
