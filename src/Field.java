@@ -50,11 +50,11 @@ public class Field extends JButton {
         return numOfBombs;
     }
 
-    public void leftClick(ArrayList<Field> fields){
-        state.leftClick(fields);
+    public void leftClick(ArrayList<Field> fields, GameLauncher launcher){
+        state.leftClick(fields, launcher);
     }
-    public void rightClick(ArrayList<Field> fields){
-        state.rightClick(fields);
+    public void rightClick(ArrayList<Field> fields, GameLauncher launcher){
+        state.rightClick(fields, launcher);
     }
 
     public State getState(){

@@ -7,12 +7,16 @@ public class Chain {
         if(currentField.getState() instanceof DefaultState){
         //display number of bombs
         if (currentField.getNumOfBombs() > 0) {
+
             currentField.setText(Integer.toString(currentField.getNumOfBombs()));
             currentField.setBackground(Color.WHITE);
             currentField.changeState(new OpenedState(currentField));
+
         } else if(!(currentField.checkIfBomb())){
+
             currentField.setBackground(Color.WHITE);
             currentField.changeState(new OpenedState(currentField));
+
             //if field has no neighbouring bombs repeat the process for surrounding fields
             int size = (int)(Math.sqrt(fields.size()));
             int i = currentField.getX() * size + currentField.getY();

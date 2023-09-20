@@ -7,7 +7,10 @@ public class GameLauncher implements MouseListener {
     MainFrame frame;
     PanelCreator board = new PanelCreator(Color.LIGHT_GRAY, 840, 620);
     private ArrayList<Field> fields;
+    private int flagsCounter;
+    private int bombs;
     GameLauncher(int size){
+        flagsCounter = 0;
         frame = new MainFrame();
         frame.setLayout(new FlowLayout(FlowLayout.CENTER,0,50));
         board.setLayout(new GridLayout(size,size));
@@ -25,7 +28,7 @@ public class GameLauncher implements MouseListener {
         }
 
         BombSpawner spawner = new BombSpawner(fields);
-        int noBombs = spawner.spawnBombs();
+        this.bombs = spawner.spawnBombs();
         //System.out.println(noBombs);
         BombSpotter spotter = new BombSpotter(fields);
         spotter.spotBombs();
@@ -43,14 +46,31 @@ public class GameLauncher implements MouseListener {
 
     }
 
+    public void increaseFlags(){
+        this.flagsCounter++;
+    }
+
+    public void decreaseFlags(){
+        this.flagsCounter--;
+    }
+
+    public void checkWin(){
+        if(flagsCounter == bombs){
+            System.out.println("Wygrałeś");
+            for (Field f:fields) {
+                f.changeState(new OpenedState(f));
+            }
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         Field tempField = (Field) e.getSource();
         if(SwingUtilities.isLeftMouseButton(e)){
-            tempField.leftClick(fields);
+            tempField.leftClick(fields, this);
         }
         if(SwingUtilities.isRightMouseButton(e)){
-            tempField.rightClick(fields);
+            tempField.rightClick(fields, this);
         }
     }
 

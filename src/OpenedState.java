@@ -6,12 +6,12 @@ public class OpenedState implements State{
         this.field = field;
     }
     @Override
-    public void leftClick(ArrayList<Field> fields) {
+    public void leftClick(ArrayList<Field> fields, GameLauncher launcher) {
 
     }
 
     @Override
-    public void rightClick(ArrayList<Field> fields) {
+    public void rightClick(ArrayList<Field> fields, GameLauncher launcher) {
 
     }
 }
