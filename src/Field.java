@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Field extends JButton {
     private State state;
@@ -49,11 +50,19 @@ public class Field extends JButton {
         return numOfBombs;
     }
 
-    public void leftClick(){
-        state.leftClick();
+    public void leftClick(ArrayList<Field> fields){
+        state.leftClick(fields);
     }
-    public void rightClick(){
-        state.rightClick();
+    public void rightClick(ArrayList<Field> fields){
+        state.rightClick(fields);
+    }
+
+    public State getState(){
+        return state;
+    }
+
+    public void uncoverChain(ArrayList<Field> fields) {
+        new Chain().uncover(fields,this);
     }
 
 }

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class DefaultState implements State{
     private Field field;
@@ -6,18 +7,21 @@ public class DefaultState implements State{
         this.field = field;
     }
     @Override
-    public void leftClick() {
+    public void leftClick(ArrayList<Field> fields) {
         if(field.checkIfBomb()){
             //lose game
+            field.setBackground(Color.BLACK);
+            field.setText("B");
+            System.out.println("Przegrałeś");
         }else {
-            field.setBackground(Color.WHITE);
-            field.changeState(new OpenedState(field));
+            field.uncoverChain(fields);
         }
 
     }
 
     @Override
-    public void rightClick() {
+    public void rightClick(ArrayList<Field> fields) {
+        field.setBackground(Color.RED);
         field.changeState(new CheckedState(field));
     }
 }

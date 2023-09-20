@@ -47,10 +47,10 @@ public class GameLauncher implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         Field tempField = (Field) e.getSource();
         if(SwingUtilities.isLeftMouseButton(e)){
-            tempField.leftClick();
+            tempField.leftClick(fields);
         }
         if(SwingUtilities.isRightMouseButton(e)){
-            tempField.rightClick();
+            tempField.rightClick(fields);
         }
     }
 
