@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -16,7 +17,11 @@ public class DefaultState implements State{
                 //f.removeMouseListener(f.getMouseListeners());
                 f.changeState(new OpenedState(f));
             }
-            System.out.println("Przegrałeś");
+            JOptionPane.showMessageDialog(null, "You lost! Try again!", "Game over", JOptionPane.INFORMATION_MESSAGE);
+
+            launcher.frame.dispose();
+            new MenuLauncher();
+
         }else {
             field.uncoverChain(fields);
         }

@@ -56,10 +56,13 @@ public class GameLauncher implements MouseListener {
 
     public void checkWin(){
         if(flagsCounter == bombs){
-            System.out.println("Wygrałeś");
             for (Field f:fields) {
                 f.changeState(new OpenedState(f));
             }
+            JOptionPane.showMessageDialog(null, "Congratulations! You won!", "Victory", JOptionPane.INFORMATION_MESSAGE);
+
+            frame.dispose();
+            new MenuLauncher();
         }
     }
 
